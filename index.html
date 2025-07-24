@@ -1,151 +1,87 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Copa Tintal - Podio y Tabla de Posiciones</title>
+  <meta charset="UTF-8">
+  <title>Copa Tintal - Tabla y Podios</title>
   <style>
-    :root {
-      --amarillo: #F0B600;
-      --negro: #111111;
-      --blanco: #fefefe;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: var(--negro);
-      color: var(--blanco);
-      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111212;
+      color: white;
       padding: 20px;
-      animation: fadeIn 1s ease;
     }
-
-    h1, h2 {
-      color: var(--amarillo);
-      text-align: center;
-      animation: slideDown 1s ease;
-    }
-
     table {
       width: 100%;
+      margin-top: 15px;
       border-collapse: collapse;
-      margin-bottom: 30px;
-      background-color: #1b1b1b;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-      border-radius: 8px;
-      overflow: hidden;
-      animation: fadeInUp 1s ease;
+      background-color: #1c1c1c;
     }
-
-    th {
-      background-color: var(--amarillo);
-      color: var(--negro);
-      font-weight: bold;
-      padding: 12px;
-      text-transform: uppercase;
-    }
-
-    td {
+    th, td {
       padding: 10px;
       border: 1px solid #444;
       text-align: center;
-      color: var(--blanco);
     }
-
-    input {
-      width: 100%;
-      border: none;
-      background-color: #292929;
-      color: var(--amarillo);
-      font-weight: bold;
-      text-align: center;
+    th {
+      background-color: #F0B600;
+      color: #000;
     }
-
-    button {
-      background-color: var(--amarillo);
-      color: var(--negro);
+    .admin-controls {
+      margin-top: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .edit-btn {
+      background: #F0B600;
       border: none;
       padding: 10px 20px;
-      margin: 10px;
-      font-weight: bold;
-      font-size: 16px;
+      color: black;
       cursor: pointer;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #ffcc00;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; } to { opacity: 1; }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-
   <h1>Copa Tintal 2025</h1>
 
-<h2>🏆 Podio</h2>
-<table id="podioTable">
-  <thead>
-    <tr>
-      <th>PUESTO</th>
-      <th>MEDALLA</th>
-      <th>CLUB</th>
-      <th>PATINADORA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td contenteditable="true">ORO</td>
-      <td contenteditable="true">CLUB A</td>
-      <td contenteditable="true">PATINADORA A</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td contenteditable="true">PLATA</td>
-      <td contenteditable="true">CLUB B</td>
-      <td contenteditable="true">PATINADORA B</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td contenteditable="true">BRONCE</td>
-      <td contenteditable="true">CLUB C</td>
-      <td contenteditable="true">PATINADORA C</td>
-    </tr>
-  </tbody>
-</table>
+  <button class="edit-btn" onclick="requestAdmin()">ADMIN</button>
 
-<h2>📊 Tabla de Posiciones</h2>
-<table id="tablaPosiciones">
-  <thead>
-    <tr>
-      <th>PUESTO</th>
-      <th>CLUB</th>
-      <th>ORO</th>
-      <th>PLATA</th>
-      <th>BRONCE</th>
-      <th>TOTAL</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr><td>1</td><td>PATIN LATINO</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  <div class="admin-controls hidden" id="adminControls">
+    <button onclick="saveData()">Guardar</button>
+    <button onclick="resetData()">Resetear</button>
+  </div>
+
+  <h2>Podio 1</h2>
+  <table id="podio1">
+    <thead>
+      <tr><th>Puesto</th><th>Club</th><th>Patinadora</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td contenteditable="false">Club A</td><td contenteditable="false">Nombre 1</td></tr>
+      <tr><td>2</td><td contenteditable="false">Club B</td><td contenteditable="false">Nombre 2</td></tr>
+      <tr><td>3</td><td contenteditable="false">Club C</td><td contenteditable="false">Nombre 3</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Podio 2</h2>
+  <table id="podio2">
+    <thead>
+      <tr><th>Puesto</th><th>Club</th><th>Patinadora</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td contenteditable="false">Club D</td><td contenteditable="false">Nombre 4</td></tr>
+      <tr><td>2</td><td contenteditable="false">Club E</td><td contenteditable="false">Nombre 5</td></tr>
+      <tr><td>3</td><td contenteditable="false">Club F</td><td contenteditable="false">Nombre 6</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Tabla de Posiciones</h2>
+  <table id="posiciones">
+    <thead>
+      <tr><th>Posición</th><th>Club</th><th>Oro</th><th>Plata</th><th>Bronce</th><th>Total</th></tr>
+    </thead>
+    <tbody id="posicionesBody">
+<tr><td>1</td><td>PATIN LATINO</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>2</td><td>SPORTING CAPITAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>3</td><td>FORZA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>4</td><td>LIBERTAD</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
@@ -167,149 +103,84 @@
 <tr><td>20</td><td>FLY KIDS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>21</td><td>RECREAR EN LINEA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
 <tr><td>22</td><td>MERLIN ROLLERS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<button onclick="guardarCambios()">Guardar Cambios</button>
+  <script>
+    let isAdmin = false;
+    const password = "Copstintal2025";
 
-<script>
-  function actualizarTablaDesdePodio() {
-    const tabla = document.getElementById('tablaPosiciones');
-    const filas = tabla.getElementsByTagName('tr');
-    const puntos = {};
-
-    for (let i = 1; i < filas.length; i++) {
-      const club = filas[i].children[1].textContent.toUpperCase().trim();
-      puntos[club] = { oro: 0, plata: 0, bronce: 0, total: 0 };
-    }
-
-    document.querySelectorAll('#podioTable tbody tr').forEach(row => {
-      const medalla = row.children[1].textContent.trim().toUpperCase();
-      const club = row.children[2].textContent.toUpperCase().trim();
-
-      if (!puntos[club]) return;
-
-      if (medalla === 'ORO') puntos[club].oro += 1;
-      if (medalla === 'PLATA') puntos[club].plata += 1;
-      if (medalla === 'BRONCE') puntos[club].bronce += 1;
-
-      puntos[club].total = puntos[club].oro + puntos[club].plata + puntos[club].bronce;
-    });
-
-    for (let i = 1; i < filas.length; i++) {
-      const club = filas[i].children[1].textContent.toUpperCase().trim();
-      if (puntos[club]) {
-        filas[i].children[2].textContent = puntos[club].oro;
-        filas[i].children[3].textContent = puntos[club].plata;
-        filas[i].children[4].textContent = puntos[club].bronce;
-        filas[i].children[5].textContent = puntos[club].total;
+    function requestAdmin() {
+      const input = prompt("Introduce la contraseña de administrador:");
+      if (input === password) {
+        isAdmin = true;
+        document.getElementById("adminControls").classList.remove("hidden");
+        document.querySelectorAll("td[contenteditable]").forEach(td => {
+          td.setAttribute("contenteditable", "true");
+        });
+        alert("Modo edición activado");
+      } else {
+        alert("Contraseña incorrecta");
       }
     }
-  }
 
-  function actualizarPosiciones() {
-    const tabla = document.getElementById('tablaPosiciones');
-    const filas = Array.from(tabla.querySelectorAll('tbody tr'));
+    function saveData() {
+      const podio1 = tableToData("podio1");
+      const podio2 = tableToData("podio2");
+      const posiciones = tableToData("posiciones");
 
-    filas.sort((a, b) => {
-      const totalA = parseInt(a.children[5].textContent);
-      const totalB = parseInt(b.children[5].textContent);
-      return totalB - totalA;
-    });
+      const data = { podio1, podio2, posiciones };
 
-    filas.forEach((fila, index) => {
-      fila.children[0].textContent = index + 1;
-      tabla.querySelector('tbody').appendChild(fila);
-    });
-  }
-
-  function guardarCambios() {
-    localStorage.setItem('podio', document.getElementById('podioTable').innerHTML);
-    actualizarTablaDesdePodio();
-    actualizarPosiciones();
-  }
-
-  function cargarDatos() {
-    const podioHTML = localStorage.getItem('podio');
-    if (podioHTML) {
-      document.getElementById('podioTable').innerHTML = podioHTML;
+      fetch("/.netlify/functions/guardar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+      .then(res => res.ok ? alert("Datos guardados") : alert("Error al guardar"))
+      .catch(err => alert("Error: " + err));
     }
-  }
 
-  window.onload = () => {
-    cargarDatos();
-    actualizarTablaDesdePodio();
-    actualizarPosiciones();
-  };
-</script>
-<h2>Mejor velocidad</h2>
-<table id="podioTable">
-  <thead>
-    <tr>
-      <th>PUESTO</th>
-      <th>MEDALLA</th>
-      <th>CLUB</th>
-      <th>PATINADORA</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>1</td>
-      <td contenteditable="true">ORO</td>
-      <td contenteditable="true">CLUB A</td>
-      <td contenteditable="true">PATINADORA A</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td contenteditable="true">PLATA</td>
-      <td contenteditable="true">CLUB B</td>
-      <td contenteditable="true">PATINADORA B</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td contenteditable="true">BRONCE</td>
-      <td contenteditable="true">CLUB C</td>
-      <td contenteditable="true">PATINADORA C</td>
-    </tr>
-  </tbody>
-</table>
-<script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+    function resetData() {
+      if (!confirm("¿Seguro que deseas resetear los datos?")) return;
+      fetch("/.netlify/functions/resetear", { method: "POST" })
+        .then(() => location.reload());
+    }
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAElSc-Vj_2O3ueFnUHUlGJoE-9K2VNj5g",
-    authDomain: "base-de-datos-e0396.firebaseapp.com",
-    projectId: "base-de-datos-e0396",
-    storageBucket: "base-de-datos-e0396.firebasestorage.app",
-    messagingSenderId: "238786693217",
-    appId: "1:238786693217:web:bc732e9a8fa31f0234c220",
-    const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+    function tableToData(id) {
+      const rows = document.querySelectorAll(`#${id} tbody tr`);
+      return Array.from(rows).map(row =>
+        Array.from(row.children).map(cell => cell.textContent.trim())
+      );
+    }
 
-  const tablaBody = document.getElementById("tabla-posiciones-body");
+    function loadData() {
+      fetch("/.netlify/functions/cargar")
+        .then(res => res.json())
+        .then(data => {
+          fillTable("podio1", data.podio1);
+          fillTable("podio2", data.podio2);
+          fillTable("posiciones", data.posiciones);
+        });
+    }
 
-  // Escuchar cambios en tiempo real
-  onSnapshot(collection(db, "tabla"), (snapshot) => {
-    tablaBody.innerHTML = "";
-    snapshot.forEach((doc) => {
-      const data = doc.data();
-      const fila = document.createElement("tr");
-      fila.innerHTML = `
-        <td>${data.club}</td>
-        <td>${data.oro}</td>
-        <td>${data.plata}</td>
-        <td>${data.bronce}</td>
-        <td>${data.total}</td>
-      `;
-      tablaBody.appendChild(fila);
-    });
-  });
+    function fillTable(id, data) {
+      const tbody = document.querySelector(`#${id} tbody`);
+      tbody.innerHTML = "";
+      data.forEach(row => {
+        const tr = document.createElement("tr");
+        row.forEach(cell => {
+          const td = document.createElement("td");
+          td.textContent = cell;
+          td.setAttribute("contenteditable", "false");
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+    }
+
+    loadData();
+  </script>
+  <script src="script.js">
 </script>
 </body>
 </html>
