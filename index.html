@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Copa Tintal - Podio y Tabla de Posiciones</title>
+  <style>
+    :root {
+      --amarillo: #F0B600;
+      --negro: #111111;
+      --blanco: #fefefe;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--negro);
+      color: var(--blanco);
+      margin: 0;
+      padding: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    h1, h2 {
+      color: var(--amarillo);
+      text-align: center;
+      animation: slideDown 1s ease;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background-color: #1b1b1b;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      border-radius: 8px;
+      overflow: hidden;
+      animation: fadeInUp 1s ease;
+    }
+
+    th {
+      background-color: var(--amarillo);
+      color: var(--negro);
+      font-weight: bold;
+      padding: 12px;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 10px;
+      border: 1px solid #444;
+      text-align: center;
+      color: var(--blanco);
+    }
+
+    input {
+      width: 100%;
+      border: none;
+      background-color: #292929;
+      color: var(--amarillo);
+      font-weight: bold;
+      text-align: center;
+    }
+
+    button {
+      background-color: var(--amarillo);
+      color: var(--negro);
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ffcc00;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Copa Tintal 2025</h1>
+
+<h2>🏆 Podio</h2>
+<table id="podioTable">
+  <thead>
+    <tr>
+      <th>PUESTO</th>
+      <th>MEDALLA</th>
+      <th>CLUB</th>
+      <th>PATINADORA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td contenteditable="true">ORO</td>
+      <td contenteditable="true">CLUB A</td>
+      <td contenteditable="true">PATINADORA A</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td contenteditable="true">PLATA</td>
+      <td contenteditable="true">CLUB B</td>
+      <td contenteditable="true">PATINADORA B</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td contenteditable="true">BRONCE</td>
+      <td contenteditable="true">CLUB C</td>
+      <td contenteditable="true">PATINADORA C</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>📊 Tabla de Posiciones</h2>
+<table id="tablaPosiciones">
+  <thead>
+    <tr>
+      <th>PUESTO</th>
+      <th>CLUB</th>
+      <th>ORO</th>
+      <th>PLATA</th>
+      <th>BRONCE</th>
+      <th>TOTAL</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr><td>1</td><td>PATIN LATINO</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>2</td><td>SPORTING CAPITAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>3</td><td>FORZA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>4</td><td>LIBERTAD</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>5</td><td>ECO-PATIN</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>6</td><td>COLOSAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>7</td><td>ARZARIOZ</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>8</td><td>LAPONTE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>9</td><td>FOUR WHEELS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>10</td><td>BEGINNERS JOSEP</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>11</td><td>COLSUBSIDIO</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>12</td><td>FAST KIDS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>13</td><td>SPEED RIEDER</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>14</td><td>FUTDEPORT</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>15</td><td>LJM SKATE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>16</td><td>ALEMAN</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>17</td><td>DINAMIC</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>18</td><td>SOBRE RUEDAS TINTAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>19</td><td>EN LA LÍNEA PEDAGÓGICOS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>20</td><td>FLY KIDS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>21</td><td>RECREAR EN LINEA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>22</td><td>MERLIN ROLLERS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+  </tbody>
+</table>
+
+<button onclick="guardarCambios()">Guardar Cambios</button>
+
+<script>
+  function actualizarTablaDesdePodio() {
+    const tabla = document.getElementById('tablaPosiciones');
+    const filas = tabla.getElementsByTagName('tr');
+    const puntos = {};
+
+    for (let i = 1; i < filas.length; i++) {
+      const club = filas[i].children[1].textContent.toUpperCase().trim();
+      puntos[club] = { oro: 0, plata: 0, bronce: 0, total: 0 };
+    }
+
+    document.querySelectorAll('#podioTable tbody tr').forEach(row => {
+      const medalla = row.children[1].textContent.trim().toUpperCase();
+      const club = row.children[2].textContent.toUpperCase().trim();
+
+      if (!puntos[club]) return;
+
+      if (medalla === 'ORO') puntos[club].oro += 1;
+      if (medalla === 'PLATA') puntos[club].plata += 1;
+      if (medalla === 'BRONCE') puntos[club].bronce += 1;
+
+      puntos[club].total = puntos[club].oro + puntos[club].plata + puntos[club].bronce;
+    });
+
+    for (let i = 1; i < filas.length; i++) {
+      const club = filas[i].children[1].textContent.toUpperCase().trim();
+      if (puntos[club]) {
+        filas[i].children[2].textContent = puntos[club].oro;
+        filas[i].children[3].textContent = puntos[club].plata;
+        filas[i].children[4].textContent = puntos[club].bronce;
+        filas[i].children[5].textContent = puntos[club].total;
+      }
+    }
+  }
+
+  function actualizarPosiciones() {
+    const tabla = document.getElementById('tablaPosiciones');
+    const filas = Array.from(tabla.querySelectorAll('tbody tr'));
+
+    filas.sort((a, b) => {
+      const totalA = parseInt(a.children[5].textContent);
+      const totalB = parseInt(b.children[5].textContent);
+      return totalB - totalA;
+    });
+
+    filas.forEach((fila, index) => {
+      fila.children[0].textContent = index + 1;
+      tabla.querySelector('tbody').appendChild(fila);
+    });
+  }
+
+  function guardarCambios() {
+    localStorage.setItem('podio', document.getElementById('podioTable').innerHTML);
+    actualizarTablaDesdePodio();
+    actualizarPosiciones();
+  }
+
+  function cargarDatos() {
+    const podioHTML = localStorage.getItem('podio');
+    if (podioHTML) {
+      document.getElementById('podioTable').innerHTML = podioHTML;
+    }
+  }
+
+  window.onload = () => {
+    cargarDatos();
+    actualizarTablaDesdePodio();
+    actualizarPosiciones();
+  };
+</script>
+<h2>Mejor velocidad</h2>
+<table id="podioTable">
+  <thead>
+    <tr>
+      <th>PUESTO</th>
+      <th>MEDALLA</th>
+      <th>CLUB</th>
+      <th>PATINADORA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td contenteditable="true">ORO</td>
+      <td contenteditable="true">CLUB A</td>
+      <td contenteditable="true">PATINADORA A</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td contenteditable="true">PLATA</td>
+      <td contenteditable="true">CLUB B</td>
+      <td contenteditable="true">PATINADORA B</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td contenteditable="true">BRONCE</td>
+      <td contenteditable="true">CLUB C</td>
+      <td contenteditable="true">PATINADORA C</td>
+    </tr>
+  </tbody>
+</table>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyAElSc-Vj_2O3ueFnUHUlGJoE-9K2VNj5g",
+    authDomain: "base-de-datos-e0396.firebaseapp.com",
+    projectId: "base-de-datos-e0396",
+    storageBucket: "base-de-datos-e0396.firebasestorage.app",
+    messagingSenderId: "238786693217",
+    appId: "1:238786693217:web:bc732e9a8fa31f0234c220",
+    const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const tablaBody = document.getElementById("tabla-posiciones-body");
+
+  // Escuchar cambios en tiempo real
+  onSnapshot(collection(db, "tabla"), (snapshot) => {
+    tablaBody.innerHTML = "";
+    snapshot.forEach((doc) => {
+      const data = doc.data();
+      const fila = document.createElement("tr");
+      fila.innerHTML = `
+        <td>${data.club}</td>
+        <td>${data.oro}</td>
+        <td>${data.plata}</td>
+        <td>${data.bronce}</td>
+        <td>${data.total}</td>
+      `;
+      tablaBody.appendChild(fila);
+    });
+  });
+</script>
+</body>
+</html>
