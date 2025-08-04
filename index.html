@@ -1,186 +1,104 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Copa Tintal - Tabla y Podios</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tabla de Posiciones - Copa Tintal 2025</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #111212;
+      margin: 0;
+      background: linear-gradient(135deg, #000000, #FFD700);
+      font-family: 'Segoe UI', sans-serif;
       color: white;
       padding: 20px;
     }
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      color: #FFD700;
+      text-shadow: 2px 2px #000;
+    }
+    .admin-section {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .table-container {
+      overflow-x: auto;
+      background-color: #111;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+      animation: fadeIn 1s ease-in;
+    }
     table {
       width: 100%;
-      margin-top: 15px;
       border-collapse: collapse;
-      background-color: #1c1c1c;
+      background-color: #222;
     }
     th, td {
-      padding: 10px;
-      border: 1px solid #444;
+      border: 1px solid #FFD700;
+      padding: 12px;
       text-align: center;
+      font-size: 1rem;
     }
     th {
-      background-color: #F0B600;
+      background-color: #FFD700;
       color: #000;
+      font-size: 1.1rem;
     }
-    .admin-controls {
-      margin-top: 10px;
-    }
-    .hidden {
-      display: none;
-    }
-    .edit-btn {
-      background: #F0B600;
+    td input {
+      background: transparent;
       border: none;
-      padding: 10px 20px;
-      color: black;
+      color: white;
+      text-align: center;
+      font-size: 1rem;
+      width: 100%;
+    }
+    td input:disabled {
+      color: white;
+    }
+    .save-btn {
+      background: #FFD700;
+      color: #000;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      margin-top: 20px;
       cursor: pointer;
-      font-weight: bold;
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+    .save-btn:hover {
+      background: #ffaa00;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-  <h1>Copa Tintal 2025</h1>
-
-  <button class="edit-btn" onclick="requestAdmin()">ADMIN</button>
-
-  <div class="admin-controls hidden" id="adminControls">
-    <button onclick="saveData()">Guardar</button>
-    <button onclick="resetData()">Resetear</button>
+  <h1>Copa Tintal 2025 - Tabla de Posiciones por Club</h1>
+  <div class="admin-section">
+    <input type="password" id="adminPass" placeholder="Contraseña de edición">
+    <button class="save-btn" onclick="enableEditing()">Activar edición</button>
+    <button class="save-btn" onclick="guardarDatos()">Guardar cambios</button>
   </div>
-
-  <h2>Podio 1</h2>
-  <table id="podio1">
-    <thead>
-      <tr><th>Puesto</th><th>Club</th><th>Patinadora</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td contenteditable="false">Club A</td><td contenteditable="false">Nombre 1</td></tr>
-      <tr><td>2</td><td contenteditable="false">Club B</td><td contenteditable="false">Nombre 2</td></tr>
-      <tr><td>3</td><td contenteditable="false">Club C</td><td contenteditable="false">Nombre 3</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Podio 2</h2>
-  <table id="podio2">
-    <thead>
-      <tr><th>Puesto</th><th>Club</th><th>Patinadora</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td contenteditable="false">Club D</td><td contenteditable="false">Nombre 4</td></tr>
-      <tr><td>2</td><td contenteditable="false">Club E</td><td contenteditable="false">Nombre 5</td></tr>
-      <tr><td>3</td><td contenteditable="false">Club F</td><td contenteditable="false">Nombre 6</td></tr>
-    </tbody>
-  </table>
-
-  <h2>Tabla de Posiciones</h2>
-  <table id="posiciones">
-    <thead>
-      <tr><th>Posición</th><th>Club</th><th>Oro</th><th>Plata</th><th>Bronce</th><th>Total</th></tr>
-    </thead>
-    <tbody id="posicionesBody">
-<tr><td>1</td><td>PATIN LATINO</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>2</td><td>SPORTING CAPITAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>3</td><td>FORZA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>4</td><td>LIBERTAD</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>5</td><td>ECO-PATIN</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>6</td><td>COLOSAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>7</td><td>ARZARIOZ</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>8</td><td>LAPONTE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>9</td><td>FOUR WHEELS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>10</td><td>BEGINNERS JOSEP</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>11</td><td>COLSUBSIDIO</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>12</td><td>FAST KIDS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>13</td><td>SPEED RIEDER</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>14</td><td>FUTDEPORT</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>15</td><td>LJM SKATE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>16</td><td>ALEMAN</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>17</td><td>DINAMIC</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>18</td><td>SOBRE RUEDAS TINTAL</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>19</td><td>EN LA LÍNEA PEDAGÓGICOS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>20</td><td>FLY KIDS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>21</td><td>RECREAR EN LINEA</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-<tr><td>22</td><td>MERLIN ROLLERS</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-    </tbody>
-  </table>
-
-  <script>
-    let isAdmin = false;
-    const password = "Copstintal2025";
-
-    function requestAdmin() {
-      const input = prompt("Introduce la contraseña de administrador:");
-      if (input === password) {
-        isAdmin = true;
-        document.getElementById("adminControls").classList.remove("hidden");
-        document.querySelectorAll("td[contenteditable]").forEach(td => {
-          td.setAttribute("contenteditable", "true");
-        });
-        alert("Modo edición activado");
-      } else {
-        alert("Contraseña incorrecta");
-      }
-    }
-
-    function saveData() {
-      const podio1 = tableToData("podio1");
-      const podio2 = tableToData("podio2");
-      const posiciones = tableToData("posiciones");
-
-      const data = { podio1, podio2, posiciones };
-
-      fetch("/.netlify/functions/guardar", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      })
-      .then(res => res.ok ? alert("Datos guardados") : alert("Error al guardar"))
-      .catch(err => alert("Error: " + err));
-    }
-
-    function resetData() {
-      if (!confirm("¿Seguro que deseas resetear los datos?")) return;
-      fetch("/.netlify/functions/resetear", { method: "POST" })
-        .then(() => location.reload());
-    }
-
-    function tableToData(id) {
-      const rows = document.querySelectorAll(`#${id} tbody tr`);
-      return Array.from(rows).map(row =>
-        Array.from(row.children).map(cell => cell.textContent.trim())
-      );
-    }
-
-    function loadData() {
-      fetch("/.netlify/functions/cargar")
-        .then(res => res.json())
-        .then(data => {
-          fillTable("podio1", data.podio1);
-          fillTable("podio2", data.podio2);
-          fillTable("posiciones", data.posiciones);
-        });
-    }
-
-    function fillTable(id, data) {
-      const tbody = document.querySelector(`#${id} tbody`);
-      tbody.innerHTML = "";
-      data.forEach(row => {
-        const tr = document.createElement("tr");
-        row.forEach(cell => {
-          const td = document.createElement("td");
-          td.textContent = cell;
-          td.setAttribute("contenteditable", "false");
-          tr.appendChild(td);
-        });
-        tbody.appendChild(tr);
-      });
-    }
-
-    loadData();
-  </script>
-  <script src="script.js">
-</script>
+  <div class="table-container">
+    <table id="tablaClubes">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Club</th>
+          <th>🥇 Oro</th>
+          <th>🥈 Plata</th>
+          <th>🥉 Bronce</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <script src="script.js"></script>
+  <script src="admin.js"></script>
 </body>
 </html>
